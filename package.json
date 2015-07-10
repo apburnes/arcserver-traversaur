@@ -1,0 +1,39 @@
+{
+  "name": "arcserver-traversaur",
+  "version": "0.0.1",
+  "description": "Traverse recursively across an ArcGIS Server REST Endpoint to create an object",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.33",
+    "lodash": "^3.10.0",
+    "request": "^2.58.0"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.2.5"
+  },
+  "scripts": {
+    "test": "mocha test --timeout 5000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apburnes/arcserver-traversaur"
+  },
+  "keywords": [
+    "ArcGIS",
+    "ArcServer",
+    "REST",
+    "Endpoint",
+    "Collection",
+    "Scrape"
+  ],
+  "author": "apburnes <bizzurnzz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apburnes/arcserver-traversaur/issues"
+  },
+  "homepage": "https://github.com/apburnes/arcserver-traversaur"
+}
