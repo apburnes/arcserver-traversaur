@@ -97,6 +97,45 @@ function traversaur(serverURL, attributes, callback) {
 * @param {array} result.endpoints - All the services available from the server
 */
 
+/**
+* Recursively traverse the ArcGIS Server REST Endpoints
+* @function traversaur.getEndpoint
+* @param {string} endpointURL - An ArcGIS Server Endpoint JSON Format URL
+* @param [object] attributes - Optional object to add to the returned JSON object
+* @param [travesau.getEndpointr~requestCallback] callback - An optional request callback
+* @return {Object} An object with endpoint info
+*/
+
+function getEndpoint(endpointURL, attributes, callback) {
+  if (typeof attributes === 'function') {
+    callback = attributes;
+    attributes = {};
+  }
+
+  var url = endpointURL;
+
+  return request.getAsync(url)
+    .spread(mergeAttributes)
+    .nodeify(callback, {spread: true});
+
+  function mergeAttributes(res, result) {
+    return _.assign(result, attributes, {
+      statusCode: res.statusCode,
+      url: res.request.uri.href || ''
+    });
+  }
+}
+
+/**
+* The optional callback. Returns a promise if not called.
+* @callback traversaur.getEndpoint~requestCallback
+* @param {string} err - The error
+* @param {object} result - An object containing the server info
+* @param {string} result.url - ArcServer Endpoint Url
+* @param {number} result.currentVersion - ArcServer version
+* @param {number} result.folders - Response status code
+*/
+
 function buildServiceUrl(url, service) {
   var parsed = url.split('?');
   var base = parsed[0];
@@ -117,3 +156,4 @@ function buildFolderUrl(url, folder) {
 }
 
 module.exports = traversaur;
+module.exports.getEndpoint = getEndpoint;

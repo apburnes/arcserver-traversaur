@@ -1,6 +1,6 @@
 {
   "name": "arcserver-traversaur",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Traverse recursively across an ArcGIS Server REST Endpoint to create an object",
   "main": "index.js",
   "directories": {
